@@ -7,7 +7,7 @@ using MvcMovieRepo.Data;
 
 namespace MvcMovieRepo.Repositories
 {
-    public class GenericRepository<T> : IRepository<T> where T : class 
+    public class GenericRepository<T> : IGenericRepository<T> where T : class 
     {
         private readonly MvcMovieRepoContext _dbContext;
 
@@ -17,7 +17,7 @@ namespace MvcMovieRepo.Repositories
             _dbSet = mvcMovieRepoContext.Set<T>();
         }
         public async  Task<IEnumerable<T>> GetAllAsync(){
-            throw new NotImplementedException();
+            return await _dbSet.ToListAsync();
         }
         public async Task<T> GetByIdAsync(int id){
             var entity = await _dbSet.FindAsync(id);
@@ -36,13 +36,14 @@ namespace MvcMovieRepo.Repositories
         }
 
         public async Task UpdateAsync(T entity){
-            throw new NotImplementedException();
-
+            _dbSet.Update(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(T entity){
-            throw new NotImplementedException();
-
+        
+            _dbSet.Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
         
     }
