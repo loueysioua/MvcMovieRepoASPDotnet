@@ -7,33 +7,40 @@ using MvcMovieRepo.Data;
 
 namespace MvcMovieRepo.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class 
+    public class GenericRepository<T> : IRepository<T> where T : class 
     {
-        private readonly MvcMovieRepoContext _mvcMovieRepoContext;
+        private readonly MvcMovieRepoContext _dbContext;
 
         protected readonly DbSet<T> _dbSet;
         public GenericRepository(MvcMovieRepoContext mvcMovieRepoContext) {
-            _mvcMovieRepoContext = mvcMovieRepoContext;
+            _dbContext = mvcMovieRepoContext;
             _dbSet = mvcMovieRepoContext.Set<T>();
         }
-        public Task<IEnumerable<T>> GetAllAsync(){
+        public async  Task<IEnumerable<T>> GetAllAsync(){
             throw new NotImplementedException();
         }
+        public async Task<T> GetByIdAsync(int id){
+            var entity = await _dbSet.FindAsync(id);
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(id), "Entity not found");
+            }
+            return entity;
+        }
+        
 
-        public Task<T> GetByIdAsynct(){
-            throw new NotImplementedException();
+        public async Task<T> AddAsync(T entity){
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<T> AddAsync(T entity){
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(T entity){
+        public async Task UpdateAsync(T entity){
             throw new NotImplementedException();
 
         }
 
-        public Task DeleteAsync(T entity){
+        public async Task DeleteAsync(T entity){
             throw new NotImplementedException();
 
         }
