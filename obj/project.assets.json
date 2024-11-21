@@ -8031,19 +8031,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\MvcMovieRepo.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
       "projectName": "MvcMovieRepo",
-      "projectPath": "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\MvcMovieRepo.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
