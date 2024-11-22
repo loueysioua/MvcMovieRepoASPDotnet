@@ -1,8 +1,12 @@
+using MvcMovieRepo.Models;
+using MvcMovieRepo.Repositories;
+using mvcMovieRepositoryDotnet.Services.ServiceContracts;
+
 public class MembershipTypeService : IMembershipTypeService
 {
-    private readonly IGenericeRepository<MembershipType> _repository;
+    private readonly MembershipTypeRepository _repository;
 
-    public MembershipTypeService(IGenericeRepository<MembershipType> repository)
+    public MembershipTypeService(MembershipTypeRepository repository)
     {
         _repository = repository;
     }
@@ -22,7 +26,7 @@ public class MembershipTypeService : IMembershipTypeService
         return await _repository.AddAsync(memebershipType);
 
     }
-    public async Task<MembershipType> UpdateMemebershipTypeAsync(MembershipType memebershipType);
+    public async Task UpdateMemebershipTypeAsync(MembershipType memebershipType);
     {
         return await _repository.UpdateAsync(memebershipType);
 
