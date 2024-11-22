@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MvcMovieRepo.Data;
 using MvcMovieRepo.Repositories;
 using MvcMovieRepo.Repositories.interfaces;
+using mvcMovieRepositoryDotnet.Services.ServiceContracts;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MvcMovieRepoContext>(options =>
@@ -12,8 +13,9 @@ builder.Services.AddDbContext<MvcMovieRepoContext>(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IMovieRepository , MovieRepository>();
-
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IGenreRepository , GenreRepository>();
+
 
 var app = builder.Build();
 
