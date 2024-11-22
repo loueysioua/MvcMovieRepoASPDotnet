@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovieRepo.Data;
 using MvcMovieRepo.Models;
+using MvcMovieRepo.Repositories;
 
 namespace MvcMovieRepo.Controllers
 {
     public class GenresController : Controller
     {
-        private readonly MvcMovieRepoContext _context;
+        private readonly IGenreRepository _repository;
 
-        public GenresController(MvcMovieRepoContext context)
+        public GenresController(IGenreRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         // GET: Genres
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Genre.ToListAsync());
+            return View(await _repository.GetAllAsync());
         }
 
         // GET: Genres/Details/5
@@ -33,8 +34,10 @@ namespace MvcMovieRepo.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Genre
-                .FirstOrDefaultAsync(m => m.Id == id);
+            //var genre = await _repository.Genre
+             //   .FirstOrDefaultAsync(m => m.Id == id);
+
+             var genre = await _repository.GetByIdAsync((Guid)id);
             if (genre == null)
             {
                 return NotFound();
@@ -59,8 +62,7 @@ namespace MvcMovieRepo.Controllers
             if (ModelState.IsValid)
             {
                 genre.Id = Guid.NewGuid();
-                _context.Add(genre);
-                await _context.SaveChangesAsync();
+                await _repository.AddAsync(genre);
                 return RedirectToAction(nameof(Index));
             }
             return View(genre);
@@ -74,7 +76,7 @@ namespace MvcMovieRepo.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Genre.FindAsync(id);
+            var genre = await _repository.GetByIdAsync((Guid)id);
             if (genre == null)
             {
                 return NotFound();
@@ -98,12 +100,11 @@ namespace MvcMovieRepo.Controllers
             {
                 try
                 {
-                    _context.Update(genre);
-                    await _context.SaveChangesAsync();
+                    await _repository.UpdateAsync(genre);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GenreExists(genre.Id))
+                    if (!_repository.EntityExists(genre.Id))
                     {
                         return NotFound();
                     }
@@ -125,8 +126,7 @@ namespace MvcMovieRepo.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Genre
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var genre = await _repository.GetByIdAsync((Guid)id);
             if (genre == null)
             {
                 return NotFound();
@@ -140,19 +140,15 @@ namespace MvcMovieRepo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var genre = await _context.Genre.FindAsync(id);
+            var genre = await _repository.GetByIdAsync((Guid)id);
             if (genre != null)
             {
-                _context.Genre.Remove(genre);
+                await _repository.DeleteAsync(genre);
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GenreExists(Guid id)
-        {
-            return _context.Genre.Any(e => e.Id == id);
-        }
+    
     }
 }

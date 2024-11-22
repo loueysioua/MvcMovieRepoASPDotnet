@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace MvcMovieRepo.Models
 {
-    public class Movie
+    public class Movie : IEntity
     {
-        private Guid Id {get; set ;} 
-        private string? Name {get; set;}
-        private int GenreId {get; set;}
-        private Genre? Genre {get; set;}
-        private List<Customer>? Customers {get; set;}
+        public Guid Id {get; set ;} 
+        public string? Name {get; set;}
+        public Guid GenreId {get; set;}
+        public Genre? Genre {get; set;}
+        public List<MovieCustomer>? Customers {get; set;}
     }
 }

@@ -1,9 +1,11 @@
-namespace mvcMovieRepositoryDotnet.Services.ServiceContracts
+using MvcMovieRepo.Models;
+
+namespace mvcMovieRepositoryDotnet.Services.ServiceContracts;
 public interface IMovieService
 {
-    public async Task<IEnumerable<Movie>> GetMoviesAsync();
-    public async Task<Movie> GetMovieByIdAsync(int id);
-    public async Task<Movie> AddMovieAsync(Movie movie);
-    public async Task<Movie> UpdateMovieAsync(Movie movie);
-    public async Task<Movie> DeleteMovieAsync(int id);
+    public Task<IEnumerable<Movie>> GetMoviesAsync();
+    public Task<Movie> GetMovieByIdAsync(Guid? id);
+    public Task<Movie> AddMovieAsync(Movie movie);
+    public Task<Movie> UpdateMovieAsync(Movie movie);
+    public Task<Movie> DeleteMovieAsync(Movie movie);
 }

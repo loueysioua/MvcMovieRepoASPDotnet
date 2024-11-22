@@ -15,5 +15,16 @@ namespace MvcMovieRepo.Data
         }
 
         public DbSet<MvcMovieRepo.Models.Genre> Genre { get; set; } = default!;
+        public DbSet<MvcMovieRepo.Models.Genre> Movie { get; set; } = default!;
+        public DbSet<MvcMovieRepo.Models.Genre> Customer { get; set; } = default!;
+
+        public DbSet<MvcMovieRepo.Models.Genre> MembershipType { get; set; } = default!;
+
+        public DbSet<MvcMovieRepo.Models.Genre> MovieCustomer { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+             modelBuilder.Entity<MovieCustomer>().HasKey(m => new {m.CustomerId , m.MovieId});
+        }
     }
 }

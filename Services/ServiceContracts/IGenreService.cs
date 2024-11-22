@@ -1,9 +1,11 @@
-namespace mvcMovieRepositoryDotnet.Services.ServiceContracts
+using MvcMovieRepo.Models;
+
+namespace mvcMovieRepositoryDotnet.Services.ServiceContracts;
 public interface IGenreService
 {
-    public async Task<IEnumerable<Genre>> GetGenresAsync();
-    public async Task<Genre> GetGenreByIdAsync(int id);
-    public async Task<Genre> AddGenreAsync(Genre Genre);
-    public async Task<Genre> UpdateGenreAsync(Genre Genre);
-    public async Task<Genre> DeleteGenreAsync(int id);
+    public Task<IEnumerable<Genre>> GetGenresAsync();
+    public Task<Genre> GetGenreByIdAsync(Guid? id);
+    public Task<Genre> AddGenreAsync(Genre Genre);
+    public Task<Genre> UpdateGenreAsync(Genre Genre);
+    public Task<Genre> DeleteGenreAsync(Genre Genre);
 }

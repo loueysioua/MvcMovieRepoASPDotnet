@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MvcMovieRepo.Data;
+using MvcMovieRepo.Models;
 
 namespace MvcMovieRepo.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class 
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
     {
         private readonly MvcMovieRepoContext _dbContext;
 
@@ -19,12 +20,9 @@ namespace MvcMovieRepo.Repositories
         public async  Task<IEnumerable<T>> GetAllAsync(){
             return await _dbSet.ToListAsync();
         }
-        public async Task<T> GetByIdAsync(int id){
+        public async Task<T?> GetByIdAsync(Guid id){
+            
             var entity = await _dbSet.FindAsync(id);
-            if (entity == null)
-            {
-                throw new ArgumentNullException(nameof(id), "Entity not found");
-            }
             return entity;
         }
         
@@ -44,6 +42,10 @@ namespace MvcMovieRepo.Repositories
         
             _dbSet.Remove(entity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public bool EntityExists(Guid id){
+            return _dbSet.Any(e => e.Id == id);
         }
         
     }

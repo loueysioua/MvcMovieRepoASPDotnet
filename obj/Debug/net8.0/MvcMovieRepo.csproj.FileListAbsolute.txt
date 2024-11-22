@@ -281,3 +281,4 @@ C:\Users\ASUS\desktop\My-git\MvcMovieRepo\obj\Debug\net8.0\refint\MvcMovieRepo.d
 C:\Users\ASUS\desktop\My-git\MvcMovieRepo\obj\Debug\net8.0\MvcMovieRepo.pdb
 C:\Users\ASUS\desktop\My-git\MvcMovieRepo\obj\Debug\net8.0\MvcMovieRepo.genruntimeconfig.cache
 C:\Users\ASUS\desktop\My-git\MvcMovieRepo\obj\Debug\net8.0\ref\MvcMovieRepo.dll
+C:\Users\ASUS\desktop\My-git\MvcMovieRepo\obj\Debug\net8.0\MvcMovieRepo.sourcelink.json

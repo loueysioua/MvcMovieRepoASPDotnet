@@ -1,9 +1,11 @@
-namespace mvcMovieRepositoryDotnet.Services.ServiceContracts
+using MvcMovieRepo.Models;
+
+namespace mvcMovieRepositoryDotnet.Services.ServiceContracts ;
 public interface IMemebershipTypeService
 {
-    public async Task<IEnumerable<MemebershipType>> GetMemebershipTypsAsync();
-    public async Task<MemebershipType> GetMemebershipTypeByIdAsync(int id);
-    public async Task<MemebershipType> AddMemebershipTypeAsync(MemebershipTyp MemebershipTyp);
-    public async Task<MemebershipType> UpdateMemebershipType Async(MemebershipType MemebershipType);
-    public async Task<MemebershipType> DeleteMemebershipType Async(int id);
+    public Task<IEnumerable<MembershipType>> GetMemebershipTypsAsync();
+    public Task<MembershipType> GetMemebershipTypeByIdAsync(Guid? id);
+    public Task<MembershipType> AddMemebershipTypeAsync(MembershipType MemebershipTyp);
+    public Task<MembershipType> UpdateMembershipType(MembershipType MemebershipType);
+    public Task<MembershipType> DeleteMemebershipType(MembershipType MemebershipType);
 }
