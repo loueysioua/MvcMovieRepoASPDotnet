@@ -1,8 +1,12 @@
+using MvcMovieRepo.Models;
+using MvcMovieRepo.Repositories.interfaces;
+using mvcMovieRepositoryDotnet.Services.ServiceContracts;
+
 public class CustomerService : ICustomerService
 {
-    private readonly IGenericeRepository<Customer> _repository;
+    private readonly ICustomerRepository _repository;
 
-    public CustomerService(IGenericeRepository<Customer> repository)
+    public CustomerService(ICustomerRepository repository)
     {
         _repository = repository;
     }
@@ -21,7 +25,7 @@ public class CustomerService : ICustomerService
     {
         return await _repository.AddAsync(customer);
     }
-    public async Task<Customer> UpdateCustomerAsync(Customer customer)
+    public async Task<> UpdateCustomerAsync(Customer customer)
     {
         return await _repository.UpdateAsync(customer);
     }

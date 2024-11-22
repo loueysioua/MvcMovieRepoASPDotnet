@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\.net\\tp4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj": {}
+    "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\MvcMovieRepo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\.net\\tp4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj": {
+    "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\MvcMovieRepo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\.net\\tp4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\MvcMovieRepo.csproj",
         "projectName": "MvcMovieRepo",
-        "projectPath": "C:\\Users\\USER\\.net\\tp4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\.net\\tp4\\MvcMovieRepoASPDotnet\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\MvcMovieRepo.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\desktop\\My-git\\MvcMovieRepo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
