@@ -15,5 +15,9 @@ namespace MvcMovieRepo.Data
         }
 
         public DbSet<MvcMovieRepo.Models.Genre> Genre { get; set; } = default!;
+        public DbSet<MvcMovieRepo.Models.Movie> Movie { get; set; } = default!;
+        public DbSet<MvcMovieRepo.Models.Customer> Customer { get; set; } = default!;
+        public DbSet<MvcMovieRepo.Models.MembershipType> MembershipType { get; set; } = default!;
+
     }
 }
