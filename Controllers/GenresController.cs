@@ -7,22 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovieRepo.Data;
 using MvcMovieRepo.Models;
+using mvcMovieRepositoryDotnet.Services.ServiceContracts;
 
 namespace MvcMovieRepo.Controllers
 {
     public class GenresController : Controller
     {
-        private readonly MvcMovieRepoContext _context;
+        private readonly IGenreService _genreService;
 
-        public GenresController(MvcMovieRepoContext context)
+        public GenresController(IGenreService genreService)
         {
-            _context = context;
+            _genreService = genreService;
         }
 
         // GET: Genres
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Genre.ToListAsync());
+            var genres = await _genreService.GetGenresAsync();
+            return View(genres);
         }
 
         // GET: Genres/Details/5
@@ -33,8 +35,7 @@ namespace MvcMovieRepo.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Genre
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var genre = await _genreService.GetGenreByIdAsync(id.Value);
             if (genre == null)
             {
                 return NotFound();
@@ -59,8 +60,7 @@ namespace MvcMovieRepo.Controllers
             if (ModelState.IsValid)
             {
                 genre.Id = Guid.NewGuid();
-                _context.Add(genre);
-                await _context.SaveChangesAsync();
+                await _genreService.AddGenreAsync(genre);
                 return RedirectToAction(nameof(Index));
             }
             return View(genre);
@@ -74,7 +74,7 @@ namespace MvcMovieRepo.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Genre.FindAsync(id);
+            var genre = await _genreService.GetGenreByIdAsync(id.Value);
             if (genre == null)
             {
                 return NotFound();
@@ -98,12 +98,11 @@ namespace MvcMovieRepo.Controllers
             {
                 try
                 {
-                    _context.Update(genre);
-                    await _context.SaveChangesAsync();
+                    await _genreService.UpdateGenreAsync(genre);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception)
                 {
-                    if (!GenreExists(genre.Id))
+                    if (await _genreService.GetGenreByIdAsync(genre.Id) == null)
                     {
                         return NotFound();
                     }
@@ -116,7 +115,6 @@ namespace MvcMovieRepo.Controllers
             }
             return View(genre);
         }
-
         // GET: Genres/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
@@ -125,8 +123,7 @@ namespace MvcMovieRepo.Controllers
                 return NotFound();
             }
 
-            var genre = await _context.Genre
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var genre = await _genreService.GetGenreByIdAsync(id.Value);
             if (genre == null)
             {
                 return NotFound();
@@ -140,19 +137,9 @@ namespace MvcMovieRepo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var genre = await _context.Genre.FindAsync(id);
-            if (genre != null)
-            {
-                _context.Genre.Remove(genre);
-            }
-
-            await _context.SaveChangesAsync();
+            await _genreService.DeleteGenreAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GenreExists(Guid id)
-        {
-            return _context.Genre.Any(e => e.Id == id);
-        }
     }
 }
