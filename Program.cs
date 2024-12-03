@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcMovieRepo.Data;
+using MvcMovieRepo.Models;
 using MvcMovieRepo.Repositories;
 using MvcMovieRepo.Repositories.interfaces;
 using mvcMovieRepositoryDotnet.Services.ServiceContracts;
@@ -12,8 +13,14 @@ builder.Services.AddDbContext<MvcMovieRepoContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IMovieRepository , MovieRepository>();
-builder.Services.AddScoped<IGenreRepository , GenreRepository>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IMembershipTypeRepository, MembershipTypeRepository>();
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IMembershipTypeService, MembershipTypeService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 

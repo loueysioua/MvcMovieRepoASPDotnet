@@ -4,9 +4,9 @@ using mvcMovieRepositoryDotnet.Services.ServiceContracts;
 
 public class GenreService : IGenreService
 {
-    private readonly GenreRepository _repository;
+    private readonly IGenreRepository _repository;
 
-    public GenreService(GenreRepository repository)
+    public GenreService(IGenreRepository repository)
     {
         _repository = repository;
     }
@@ -18,7 +18,7 @@ public class GenreService : IGenreService
 
     public async Task<Genre?> GetGenreByIdAsync(Guid? id)
     {
-        if(id==null) return null;
+        if (id == null) return null;
         return await _repository.GetByIdAsync((Guid)id);
     }
 
@@ -32,9 +32,10 @@ public class GenreService : IGenreService
         await _repository.UpdateAsync(genre);
 
     }
-    public async Task DeleteGenreAsync(Guid id){
+    public async Task DeleteGenreAsync(Guid id)
+    {
         var genre = await _repository.GetByIdAsync(id);
-        if(genre != null)
+        if (genre != null)
             await _repository.DeleteAsync(genre);
     }
 
