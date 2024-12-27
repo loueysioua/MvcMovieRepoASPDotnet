@@ -1,8 +1,14 @@
+
+using MvcMovieRepo.Models;
+using MvcMovieRepo.Repositories;
+using MvcMovieRepo.Repositories.interfaces;
+using mvcMovieRepositoryDotnet.Services.ServiceContracts;
+
 public class MovieService : IMovieService
 {
-    private readonly IGenericeRepository<Movie> _repository;
+    private readonly IMovieRepository _repository;
 
-    public MovieService(IGenericeRepository<Movie> repository)
+    public MovieService(IMovieRepository repository)
     {
         _repository = repository;
     }
@@ -14,21 +20,30 @@ public class MovieService : IMovieService
 
     public async Task<Movie?> GetMovieByIdAsync(Guid id)
     {
-        return await _repository.GetByIdAsync(id);
+        var movie = await _repository.GetByIdAsync(id);
+        if (movie == null)
+        {
+            return null;
+        }
+        return movie;
     }
 
     public async Task<Movie> AddMovieAsync(Movie movie)
     {
         return await _repository.AddAsync(movie);
     }
-    public async Task<Movie> UpdateMovieAsync(Movie movie)
+    public async Task UpdateMovieAsync(Movie movie)
     {
-        return await _repository.UpdateAsync(movie);
+        await _repository.UpdateAsync(movie);
     }
-    public async Task<Movie> DeleteMovieAsync(Guid id)
+    public async Task DeleteMovieAsync(Guid id)
     {
         var movie = await _repository.GetByIdAsync(id);
-        return await _repository.DeleteAsync(movie);
+        if (movie != null)
+        {
+            await _repository.DeleteAsync(movie);
+
+        }
     }
 
 

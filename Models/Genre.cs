@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MvcMovieRepo.Models;
 
-public class Genre
+public class Genre : IEntity
 {
     public Guid Id { get; set; }
     public string? GenreName { get; set; }

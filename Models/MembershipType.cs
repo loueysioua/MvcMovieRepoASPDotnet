@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MvcMovieRepo.Models
 {
-    public class MembershipType
+    public class MembershipType : IEntity
     {
         public Guid Id {get; set ;} 
         public float SignUpFee {get; set;}

@@ -18,7 +18,7 @@ namespace mvcMovieRepositoryDotnet.Controllers
         // GET: membershipTypes
         public async Task<IActionResult> Index()
         {
-            var membershipTypes = await _membershipTypeService.GetMemebershipTypesAsync();
+            var membershipTypes = await _membershipTypeService.GetMembershipTypesAsync();
             return View(membershipTypes);
         }
 
@@ -30,7 +30,7 @@ namespace mvcMovieRepositoryDotnet.Controllers
                 return NotFound();
             }
 
-            var membershipType = await _membershipTypeService.GetMemebershipTypeByIdAsync(id.Value);
+            var membershipType = await _membershipTypeService.GetMembershipTypeByIdAsync(id.Value);
             if (membershipType == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace mvcMovieRepositoryDotnet.Controllers
             if (ModelState.IsValid)
             {
                 membershipType.Id = Guid.NewGuid();
-                await _membershipTypeService.AddMemebershipTypeAsync(membershipType);
+                await _membershipTypeService.AddMembershipTypeAsync(membershipType);
                 return RedirectToAction(nameof(Index));
             }
             return View(membershipType);
@@ -67,7 +67,7 @@ namespace mvcMovieRepositoryDotnet.Controllers
                 return NotFound();
             }
 
-            var membershipType = await _membershipTypeService.GetMemebershipTypeByIdAsync(id.Value);
+            var membershipType = await _membershipTypeService.GetMembershipTypeByIdAsync(id.Value);
             if (membershipType == null)
             {
                 return NotFound();
@@ -90,11 +90,11 @@ namespace mvcMovieRepositoryDotnet.Controllers
             {
                 try
                 {
-                    await _membershipTypeService.UpdateMemebershipTypeAsync(membershipType);
+                    await _membershipTypeService.UpdateMembershipTypeAsync(membershipType);
                 }
                 catch (Exception)
                 {
-                    if (await _membershipTypeService.GetMemebershipTypeByIdAsync(membershipType.Id) == null)
+                    if (await _membershipTypeService.GetMembershipTypeByIdAsync(membershipType.Id) == null)
                     {
                         return NotFound();
                     }
@@ -116,7 +116,7 @@ namespace mvcMovieRepositoryDotnet.Controllers
                 return NotFound();
             }
 
-            var membershipType = await _membershipTypeService.GetMemebershipTypeByIdAsync(id.Value);
+            var membershipType = await _membershipTypeService.GetMembershipTypeByIdAsync(id.Value);
             if (membershipType == null)
             {
                 return NotFound();
@@ -130,7 +130,7 @@ namespace mvcMovieRepositoryDotnet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            await _membershipTypeService.DeleteMemebershipTypeAsync(id);
+            await _membershipTypeService.DeleteMembershipTypeAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }

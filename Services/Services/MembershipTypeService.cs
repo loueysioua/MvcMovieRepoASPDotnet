@@ -1,36 +1,50 @@
+using MvcMovieRepo.Models;
+using MvcMovieRepo.Repositories;
+using MvcMovieRepo.Repositories.interfaces;
+using mvcMovieRepositoryDotnet.Services.ServiceContracts;
+
 public class MembershipTypeService : IMembershipTypeService
 {
-    private readonly IGenericeRepository<MembershipType> _repository;
+    private readonly IMembershipTypeRepository _repository;
 
-    public MembershipTypeService(IGenericeRepository<MembershipType> repository)
+    public MembershipTypeService(IMembershipTypeRepository repository)
     {
         _repository = repository;
     }
 
-    public async Task<IEnumerable<MembershipType>> GetMemebershipTypesAsync()
+    public async Task<IEnumerable<MembershipType>> GetMembershipTypesAsync()
     {
         return await _repository.GetAllAsync();
     }
 
-    public async Task<MembershipType?> GetMemebershipTypeByIdAsync(Guid id)
+    public async Task<MembershipType?> GetMembershipTypeByIdAsync(Guid id)
     {
-        return await _repository.GetByIdAsync(id);
+        var membershipType = await _repository.GetByIdAsync(id);
+        if (membershipType == null)
+        {
+            return null;
+        }
+        return membershipType;
     }
 
-    public async Task<MembershipType> AddMemebershipTypeAsync(MembershipType memebershipType)
+    public async Task<MembershipType> AddMembershipTypeAsync(MembershipType membershipType)
     {
-        return await _repository.AddAsync(memebershipType);
+        return await _repository.AddAsync(membershipType);
 
     }
-    public async Task<MembershipType> UpdateMemebershipTypeAsync(MembershipType memebershipType);
+    public async Task UpdateMembershipTypeAsync(MembershipType membershipType)
     {
-        return await _repository.UpdateAsync(memebershipType);
-
-    }
-    public async Task<MembershipType> DeleteMemebershipTypeAsync(Guid id)
-        var memebershipType = await _repository.GetByIdAsync(id);
-        return await _repository.DeleteAsync(memebershipType);
+        await _repository.UpdateAsync(membershipType);
     }
 
+
+    public async Task DeleteMembershipTypeAsync(Guid id)
+    {
+        var membershipType = await _repository.GetByIdAsync(id);
+        if (membershipType != null)
+        {
+            await _repository.DeleteAsync(membershipType);
+        }
+    }
 
 }
