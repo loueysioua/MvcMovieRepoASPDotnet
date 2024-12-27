@@ -20,7 +20,6 @@ namespace MvcMovieRepo.Controllers
             _genreService = genreService;
         }
 
-        // GET: Genres
         public async Task<IActionResult> Index()
         {
             var genres = await _genreService.GetGenresAsync();

@@ -1,22 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\My-git\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\My-git\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\My-git\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
         "projectName": "MvcMovieRepo",
-        "projectPath": "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\FirstTpDotNet\\TP4\\MvcMovieRepoASPDotnet\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\My-git\\MvcMovieRepoASPDotnet\\MvcMovieRepo.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\My-git\\MvcMovieRepoASPDotnet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
-        "originalTargetFrameworks": ["net8.0"],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -27,7 +29,9 @@
           }
         },
         "warningProperties": {
-          "warnAsError": ["NU1605"]
+          "warnAsError": [
+            "NU1605"
+          ]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
