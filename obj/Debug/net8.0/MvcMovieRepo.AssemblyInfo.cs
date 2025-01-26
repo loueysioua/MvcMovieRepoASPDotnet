@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MvcMovieRepo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+770b4935b4160591e66571b9c9eb3234e07658fe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c262dfca753f517071e07e8e74614bbaabc6106")]
 [assembly: System.Reflection.AssemblyProductAttribute("MvcMovieRepo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MvcMovieRepo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
